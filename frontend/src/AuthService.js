@@ -1,3 +1,8 @@
+/* This module provides utility functions for managing authentication
+ * in the frontend, including login, registration, token storage, 
+ * retrieval of the current user, and logout */
+
+/* Submit login request to backend */
 export async function login(email, password) {
   const res = await fetch("http://localhost:5000/login", {
     method: "POST",
@@ -9,6 +14,7 @@ export async function login(email, password) {
   return data;
 }
 
+/* Submit registration request to backend */
 export async function register(email, password, confirm_password) {
   const res = await fetch("http://localhost:5000/register", {
     method: "POST",
@@ -18,6 +24,7 @@ export async function register(email, password, confirm_password) {
   return res.json();
 }
 
+/* Check if user is currently logged in */
 export function getUser() {
   const token = localStorage.getItem("token");
   if (!token) return null;
@@ -29,6 +36,7 @@ export function getUser() {
   }
 }
 
+/* Log user out */
 export function logout() {
   localStorage.removeItem("token");
 }

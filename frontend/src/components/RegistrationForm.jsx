@@ -7,7 +7,7 @@ import { Toast } from 'primereact/toast';
 import { register } from '../AuthService'
 import '../App.css'
 
-
+/* Form platform for user registration */
 export default function RegisterForm({ switchToLogin }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -18,11 +18,13 @@ export default function RegisterForm({ switchToLogin }) {
   const successToast = useRef(null);
   const [isValid, setIsValid] = useState(false);
 
+  /* Check email and passowrd validity upon user input  */
     useEffect(() => {
       const valid = validateEmail(email) ==="" && validatePassword(password) === "" && validateConfirmPassword(confirmPassword) === ""
       setIsValid(valid);
     }, [email, password, confirmPassword]);
 
+  /* Check email validity */
   const validateEmail = (value) => {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!value || value==="") return "Email is required \n";
@@ -30,6 +32,7 @@ export default function RegisterForm({ switchToLogin }) {
     return "";
   };
 
+  /* Check password validity */
   const validatePassword = (value) => {
     if (!value || value === "") return "Password is required";
     if (value.length < 8) return "Password must be at least 8 characters long";
@@ -39,15 +42,18 @@ export default function RegisterForm({ switchToLogin }) {
     return "";
   };
 
+  /* Check passwords mathcing status  */
   const validateConfirmPassword = (value) => {
     if (value !== password) return "Passwords do not match";
     return "";
   };
   
+  /* Show pop up of registration status upon submiting  */
   const showSuccessMessage = (ref, severity, header, detail) => {
     ref.current.show({ severity: severity, summary: header, detail: detail, life: 3000 });
   };
 
+  /* Submit registration request to backend if cradentials are valid  */
   const handleSubmit = async (e) => {
     e.preventDefault(); //prevent the browser from reloading the page when the form is submitted.
     const res = await register(email, password, confirmPassword);

@@ -2,6 +2,7 @@ import { Card } from 'primereact/card';
 import { Button } from 'primereact/button';
 import { getUser, logout } from '../AuthService';
 
+/* User Dashboard  */
 function Dashboard({ onLogout }) {
   const userEmail = getUser();
 

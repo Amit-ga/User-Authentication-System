@@ -6,17 +6,20 @@ import { Button } from 'primereact/button';
 import { login } from '../AuthService';
 import '../App.css'
 
+/* Form platform for user login */
 export default function LoginForm({ onLogin, switchToRegister }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [isValid, setIsValid] = useState(false);
-  
+
+  /* Check email and passowrd validity upon user input  */
   useEffect(() => {
     const valid = email && password
       setIsValid(valid);
     }, [email, password]);
 
+  /* Submit login attempt to be if cradentials are valid  */
   const handleSubmit = async (e) => {
     e.preventDefault();
     const res = await login(email, password);
