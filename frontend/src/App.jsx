@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import RegisterForm from './RegistrationForm';
-import LoginForm from './LoginForm';
-import Dashboard from './Dashboard';
+import { useState, useEffect } from 'react';
+import RegisterForm from './components/RegistrationForm';
+import LoginForm from './components/LoginForm';
+import Dashboard from './components/Dashboard';
 import { getUser } from './AuthService';
 import './app.css';
 import 'primereact/resources/themes/lara-light-blue/theme.css';

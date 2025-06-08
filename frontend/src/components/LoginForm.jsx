@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { FloatLabel } from 'primereact/floatlabel';
 import { InputText } from 'primereact/inputtext';
 import { Password } from 'primereact/password';
 import { Button } from 'primereact/button';
-import { login } from './AuthService';
-import './App.css'
+import { login } from '../AuthService';
+import '../App.css'
 
 export default function LoginForm({ onLogin, switchToRegister }) {
   const [email, setEmail] = useState("");
