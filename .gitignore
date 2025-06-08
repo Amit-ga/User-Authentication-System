@@ -1,0 +1,6 @@
+backend/__pycache__/*
+backend/.idea/*
+frontend/node_modules/*
+frontend/public/*
+frontend/src/assets/react.svg
+backend/tests/__pycache__/*
