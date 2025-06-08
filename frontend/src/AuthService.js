@@ -4,7 +4,7 @@
 
 /* Submit login request to backend */
 export async function login(email, password) {
-  const res = await fetch("http://localhost:5000/login", {
+  const res = await fetch(`http://${import.meta.env.VITE_APP_BACKEND_URL}/login`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email, password })
@@ -16,7 +16,7 @@ export async function login(email, password) {
 
 /* Submit registration request to backend */
 export async function register(email, password, confirm_password) {
-  const res = await fetch("http://localhost:5000/register", {
+  const res = await fetch(`http://${import.meta.env.VITE_APP_BACKEND_URL}/register`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email, password, confirm_password })
