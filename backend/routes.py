@@ -18,7 +18,7 @@ def register():
         return jsonify({"error": str(e)}), 400
     if data.email in users_db:
         return jsonify({"error": "User already exists"}), 400
-    if data.password != data.confirmPassword:
+    if data.password != data.confirm_password:
         return jsonify({"error": "Passwords do not match"}), 400
     users_db[data.email] = bcrypt.hash(data.password) # secure password with hash before storing
     print('users_db', users_db)

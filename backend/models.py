@@ -11,7 +11,7 @@ import re
 class RegisterModel(BaseModel):
     email: EmailStr
     password: str = Field(min_length=8)
-    confirmPassword: str
+    confirm_password: str
 
     @field_validator("password")
     def validate_password_strength(cls, value):
