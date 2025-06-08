@@ -15,7 +15,6 @@ export default function RegisterForm({ switchToLogin }) {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [confirmError, setConfirmError] = useState("");
-  const [successMsg, setSuccessMsg] = useState("");
   const successToast = useRef(null);
   const [isValid, setIsValid] = useState(false);
 
@@ -33,9 +32,10 @@ export default function RegisterForm({ switchToLogin }) {
 
   const validatePassword = (value) => {
     if (!value || value === "") return "Password is required";
-    if (value.length < 6) return "Password must be at least 6 characters long";
+    if (value.length < 8) return "Password must be at least 8 characters long";
     if (!/[A-Z]/.test(value)) return "Must include uppercase letter";
     if (!/[0-9]/.test(value)) return "Must include a number";
+    if (!/[!@#$%^&*(),.?":{}|<>]/.test(value)) return "Must include special character"
     return "";
   };
 
@@ -44,16 +44,18 @@ export default function RegisterForm({ switchToLogin }) {
     return "";
   };
   
-  const showSuccessMessage = (event, ref, severity) => {
-    ref.current.show({ severity: severity, summary: 'Registration Status', detail: successMsg, life: 3000 });
+  const showSuccessMessage = (ref, severity, header, detail) => {
+    ref.current.show({ severity: severity, summary: header, detail: detail, life: 3000 });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault(); //prevent the browser from reloading the page when the form is submitted.
     const res = await register(email, password, confirmPassword);
     if (res.message) {
-      setSuccessMsg(res.message);
-      showSuccessMessage(e, successToast, 'success')
+      showSuccessMessage(successToast, 'success', 'Success!', res.message)
+    }
+    else if (res.error) {
+      showSuccessMessage(successToast, 'error', 'Fail!', res.error)
     }
   };
 
