@@ -1,6 +1,6 @@
 """
-This file defines simple reusable data validation models using Pydantic.
-These models are used for structured request parsing and input validation.
+Reusable data validation models using Pydantic, used for structured
+request parsing and input validation.
 Note: This project does not use a database, so these are not ORM models.
 """
 
