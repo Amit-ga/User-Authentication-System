@@ -94,5 +94,6 @@ Tests include parameterized checks for:
 - JWT is decoded in the frontend to get the logged-in user’s email.
 - Frontend form validation (password strength, matching fields) is performed before submission.
 - Backend also validates credentials to ensure they haven’t been tampered with during transmission from the frontend.
-  Additionally, it uses the email_validator library, which performs both syntax and domain verification for email addresses.
+- To enforce strong password rules in the registration process, I use a Pydantic v2-compatible validator on the `password` field.
+  Instead of raising regular Python `ValueError`s (which can’t be serialized to JSON in Flask), I raise `PydanticCustomError`.
 - Protected dashboard route only loads if a valid token is stored in localStorage.
