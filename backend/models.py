@@ -4,7 +4,7 @@ request parsing and input validation.
 Note: This project does not use a database, so these are not ORM models.
 """
 
-from pydantic import BaseModel, EmailStr, Field, ValidationError, field_validator
+from pydantic import BaseModel, EmailStr, Field, field_validator
 from pydantic_core import PydanticCustomError
 import re
 
